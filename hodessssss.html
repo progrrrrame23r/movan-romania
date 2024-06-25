@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر الأبس</title>
+    <style>
+        /* إعادة تعيين الأنماط */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* أنماط الهيدر */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* أنماط التنقل */
+        nav {
+            background-color: #444;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        /* أنماط المحتوى الرئيسي */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            width: calc(30% - 20px); /* تعديل عرض المنتج ليتسع لثلاثة منتجات في السطر */
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .product h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .product .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .product button {
+            display: block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .product button:hover {
+            background-color: #555;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            display: none; /* إخفاء الأسهم افتراضيًا */
+        }
+
+        .arrow.left {
+            left: 10px;
+        }
+
+        .arrow.right {
+            right: 10px;
+        }
+
+        .product:hover .arrow {
+            display: block; /* إظهار الأسهم عند تمرير الماوس فوق المنتج */
+        }
+
+        .arrow:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* أنماط التذييل */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* أنماط الرسالة المنبثقة */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #444;
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 1000;
+        }
+
+
+        @media screen and (max-width: 768px) {
+            .product {
+                width: calc(100% - 20px); /* عرض المنتج ليكون في عمود واحد على الهاتف */
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">MOCAN</div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">الرئسيه</a></li>
+            <li><a href="#" onclick="showPopup()">السلة</a></li> <!-- رابط الانتقال إلى صفحة السلة -->
+            <li><a href="#" onclick="showPopup()">عن المتجر</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- منتجات -->
+        <!-- منتج 1 -->
+       <!-- منتج 2 -->
+    <div class="product">
+        <div class="image-container">
+        <a href="mocan trayngle.html">
+            <img class="first-image" src="aaaAAAAAhodes P/M W 1.png" alt="منتج 2">
+            <img class="second-image" src="aaaAAAAAhodes P/M W2.png" alt="منتج 2" style="display:none;">
+        </a>
+        <button class="arrow left" onclick="prevImage(this)">&#9664;</button>
+        <button class="arrow right" onclick="nextImage(this)">&#9654;</button>
+    </div>
+    <h2> هودي موكان</h2>
+    <p> هودي موكان يتميز بالراحة والأناقة، مثالي للمناسبات اليومية</p>
+    <p class="price"> 18.00 KWD : السعر</p>
+    <button onclick="addToCart('هودي موكان', 39.99)">أضف إلى السلة</button>
+</div>
+
+
+       <!-- منتج 2 -->
+<!-- منتج 2 -->
+<div class="product">
+    <div class="image-container">
+        <a href="mocan city.html">
+            <img class="first-image" src="aaaAAAAAhodes P/CI W1.png" alt="منتج 2">
+            <img class="second-image" src="aaaAAAAAhodes P/CI W 2.png" alt="منتج 2" style="display:none;">
+        </a>
+        <button class="arrow left" onclick="prevImage(this)">&#9664;</button>
+        <button class="arrow right" onclick="nextImage(this)">&#9654;</button>
+    </div>
+    <h2> هودي موكان</h2>
+    <p> هودي موكان يتميز بالراحة والأناقة، مثالي للمناسبات اليومية</p>
+    <p class="price"> 18.00 KWD : السعر</p>
+    <button onclick="addToCart('هودي موكان', 39.99)">أضف إلى السلة</button>
+</div>
+
+
+
+        <!-- منتج 3 -->
+        <div class="product">
+    <div class="image-container">
+        <a href="mocan straght.html">
+            <img class="first-image" src="aaaAAAAAhodes P/M W 1.png" alt="منتج 2">
+            <img class="second-image" src="aaaAAAAAhodes P/M 2 W 2 .png" alt="منتج 2" style="display:none;">
+        </a>
+        <button class="arrow left" onclick="prevImage(this)">&#9664;</button>
+        <button class="arrow right" onclick="nextImage(this)">&#9654;</button>
+    </div>
+    <h2> هودي موكان</h2>
+    <p> هودي موكان يتميز بالراحة والأناقة، مثالي للمناسبات اليومية</p>
+    <p class="price"> 18.00 KWD : السعر</p>
+    <button onclick="addToCart('هودي موكان', )">أضف إلى السلة</button>
+</div>
+
+ 
+
+<!-- صندوق الرسائل المنبثقة -->
+ 
+
+    <!-- صندوق الرسائل المنبثقة -->
+    
+    <script>
+        function nextImage(element) {
+            const product = element.parentElement;
+            const firstImage = product.querySelector('.first-image');
+            const secondImage = product.querySelector('.second-image');
+
+            if (firstImage.style.display === 'none') {
+                firstImage.style.display = 'block';
+                secondImage.style.display = 'none';
+            } else {
+                firstImage.style.display = 'none';
+                secondImage.style.display = 'block';
+            }
+        }
+
+        function prevImage(element) {
+            nextImage(element); // نفس الوظيفة لأننا نتنقل بين صورتين فقط
+        }
+
+        
+
+        function showPopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'block';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000); // إخفاء الرسالة بعد 3 ثوانٍ
+        }
+        function openMocanCity() {
+            window.location.href = 'hodes script shop/mocan city.html'; // تأكد من وجود صفحة mocan_city.html في نفس المجلد
+        }
+        
+        
+    </script>
+</body>
+</html>

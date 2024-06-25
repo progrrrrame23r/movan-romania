@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قميص فلينكو</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar ul li {
+            float: left;
+        }
+        .navbar ul li a {
+            display: block;
+            color: #ffffff;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navbar ul li a:hover {
+            background-color: #ffffff;
+            color: #333;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 80px auto 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
+            align-items: center;
+        }
+        .product-content {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            flex-direction: row;
+        }
+        .product-image {
+            flex: 1;
+            max-width: 100%;
+            position: relative;
+        }
+        .product-image img {
+            width: 100%;
+            border-radius: 10px;
+            max-height: 600px; /* التحكم في الحد الأقصى لارتفاع الصورة */
+        }
+        .nav-arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .nav-arrows span {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .product-details {
+            flex: 1;
+            max-width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-option {
+            margin-bottom: 20px;
+        }
+        .product-option label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .color-options, .size-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .color-option, .size-option {
+            width: 40px;
+            height: 40px;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .color-option.white {
+            background-color: #ffffff;
+        }
+        .color-option.black {
+            background-color: #000;
+        }
+        .color-option.brown {
+            background-color: #88e3ff; /* لون بني */
+        }
+        .color-option.selected, .size-option.selected {
+            border: 2px solid #000;
+            transform: scale(1.1);
+        }
+        .size-option {
+            width: 60px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .size-option:hover {
+            background-color: #ffffff;
+        }
+        .add-to-cart-container {
+            margin-top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .add-to-cart-btn {
+            background-color: #333;
+            color: rgb(255, 255, 255);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .add-to-cart-btn:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
+        .add-to-cart-btn:active {
+            transform: scale(1);
+        }
+        .product-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .product-description {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .product-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .quantity-input {
+            width: 60px;
+            padding: 10px; /* Increase padding for better touch interaction */
+            text-align: center;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            outline: none; /* Remove default focus outline */
+            transition: border-color 0.3s;
+        }
+        
+        .quantity-input:focus {
+            border-color: #333; /* Change border color on focus for better visual feedback */
+        }
+        .toast-message {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 1000;
+        }
+    
+        .show-toast {
+            opacity: 1;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .product-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .product-image, .product-details {
+                max-width: 100%;
+            }
+            .size-option, .color-option {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .add-to-cart-btn {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+            .size-option, .color-option {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="cart.html">السلة</a></li>
+
+            
+            
+        </ul>
+    </div>
+    <div class="container">
+        <div class="product-content">
+            <div class="product-image">
+                <img id="productImage" class="product-img" src="aaaAAAAAhodes P/CI W1.png" alt="صورة المنتج">
+                <div class="nav-arrows">
+                    <span id="prevImage">&lt;</span>
+                    <span id="nextImage">&gt;</span>
+                </div>
+            </div>
+            <div class="product-details">
+                <div class="product-title">هودي موكان</div>
+                <div class="product-description">هودي موكان يتميز بالراحة والأناقة، مثالي للمناسبات اليومية.</div>
+                <div class="product-price">18.00 KWD</div>
+                <div class="product-option">
+                    <label for="color">اختر اللون:</label>
+                    <div class="color-options" id="colorOptions">
+                        <div class="color-option white selected" data-color="white"></div>
+                        <div class="color-option black" data-color="black"></div>
+                        <div class="color-option brown" data-color="brown"></div> <!-- لون البني -->
+                    </div>
+                    <input type="hidden" id="color" name="color" value="white">
+                </div>
+                <div class="product-option">
+                    <label for="size">اختر المقاس:</label>
+                    <div class="size-options" id="sizeOptions">
+                        <div class="size-option" data-size="XS">XS</div>
+                        <div class="size-option" data-size="S">S</div>
+                        <div class="size-option" data-size="M">M</div>
+                        <div class="size-option" data-size="L">L</div>
+                        <div class="size-option" data-size="XL">XL</div>
+                    </div>
+                    <input type="hidden" id="size" name="size" value="XS">
+                    <label for="quantity">الكمية:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1" class="quantity-input">
+                </div>
+                <div class="add-to-cart-container">
+                    <button class="add-to-cart-btn" onclick="addToCart()">ضع في السلة</button>
+
+                </div>
+                <div class="toast-message" id="toastMessage">سيتم إضافة الخاصيه قريبًا</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const colorOptions = document.querySelectorAll('.color-option');
+        const productImage = document.getElementById('productImage');
+        const prevImage = document.getElementById('prevImage');
+        const nextImage = document.getElementById('nextImage');
+
+        const images = {
+            white: [
+                'aaaAAAAAhodes P/CI W1.png',
+                'aaaAAAAAhodes P/CI W 2.png'
+            ],
+            black: [
+                'aaaAAAAAhodes P/CI 1 B.png',
+                'aaaAAAAAhodes P/CI 2 B.png'
+            ],
+            brown: [
+                'aaaAAAAAhodes P/S 1 .png',
+                'aaaAAAAAhodes P/S2.png'
+            ]
+        };
+
+        let currentColor = 'white';
+        let currentIndex = 0;
+
+        function updateImage() {
+            productImage.src = images[currentColor][currentIndex];
+        }
+
+        colorOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                colorOptions.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                currentColor = this.getAttribute('data-color');
+                currentIndex = 0;
+                document.getElementById('color').value = currentColor;
+                updateImage();
+            });
+        });
+
+        prevImage.addEventListener('click', function() {
+            currentIndex = (currentIndex - 1 + images[currentColor].length) % images[currentColor].length;
+            updateImage();
+        });
+
+        nextImage.addEventListener('click', function() {
+            currentIndex = (currentIndex + 1) % images[currentColor].length;
+            updateImage();
+        });
+
+        document.querySelectorAll('.size-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                document.getElementById('size').value = this.getAttribute('data-size');
+            });
+        });
+      
+        function addToCart() {
+            // عرض رسالة الإشعار
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.classList.add('show-toast');
+        
+            // تأخير لبضع ثواني قبل إخفاء الرسالة
+            setTimeout(function() {
+                toastMessage.classList.remove('show-toast');
+            }, 2000); // 2000 ميلي ثانية = 2 ثانية
+        
+            // يمكنك إضافة الكود لتخزين المنتج في localStorage هنا
+            const product = {
+                name: "قميص فلينكو",
+                color: "white",
+                size: "XS",
+                quantity: 1
+            };
+        
+            // تخزين المنتج في localStorage
+            localStorage.setItem('cartProduct', JSON.stringify(product));
+        }
+        
+                 
+        
+    </script>
+</body>
+</html>

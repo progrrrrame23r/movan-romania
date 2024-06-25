@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر الأبس</title>
+    <link rel="stylesheet" href="shirts-style.css">
+    <style>
+        /* إعادة تعيين الأنماط */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* أنماط الهيدر */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* أنماط التنقل */
+        nav {
+            background-color: #444;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        /* أنماط المحتوى الرئيسي */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            width: calc(30% - 20px); /* تعديل عرض المنتج ليتسع لثلاثة منتجات في السطر */
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            transition: transform 0.6s ease; /* زمن التبديل بين الصور */
+        }
+
+        .product .second-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease; /* زمن التبديل بين الصور */
+            transform: scale(1.1); /* تكبير الصورة قليلاً لتوفير تأثير مميز */
+            width: 100%;
+        }
+
+        .product:hover .second-image {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .product:hover .first-image {
+            opacity: 0;
+            transform: scale(1.1);
+        }
+
+        .product h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .product .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .product button {
+            display: block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .product button:hover {
+            background-color: #555;
+        }
+
+        /* أنماط التذييل */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* أنماط الرسالة */
+        .message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none; /* يتم إخفاء الرسالة بشكل افتراضي */
+            
+        }
+        
+        @media only screen and (max-width: 768px) {
+            .product {
+                width: calc(100% - 20px); /* يجعل المنتج يشغل العرض الكامل للشاشات الصغيرة */
+                margin-bottom: 10px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">MOCAN<br></div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="#" onclick="showMessage('سيتم تحديثها قريباً')">السلة</a></li> <!-- رابط الانتقال إلى صفحة السلة -->
+            <li><a href="#" onclick="showMessage('سيتم تحديثها قريباً')">عن المتجر</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- منتج 1 -->
+        <div class="product">
+        <a href="SHIRT MOCN STTRIGHT.html">
+            <img class="first-image" src="shirtsss/mocan white 1.png" alt="منتج 1">
+          
+            <img class="second-image" src="shirtsss/m w2.png" alt="منتج 1">
+        </a>
+        <h2>تيشرت موكان</h2>
+        <p>تيشرت موكان يتميز بالراحة والأناقة، مثالي للمناسبات اليومية.</p>
+        <p class="price">14.00 KWD</p>
+            <button onclick="addToCart('قميص رياضي', 29.99)">أضف إلى السلة</button>
+        </div>
+
+    
+
+        <!-- منتج 4 -->
+        <div class="product">
+            <a href="MOCAN SHIRT 2 - Copy (2) - Copy.html">
+            <img class="first-image" src="shirtsss/im b 1.png" alt="منتج 4">
+            <img class="second-image" src="shirtsss/im b2 .png" alt="منتج 4">
+        </a>
+        <h2>تيشرت موكان</h2>
+        <p>تيشرت موكان يتميز بالراحة والأناقة، مثالي للمناسبات اليومية.</p>
+        <p class="price">14.00 KWD</p>
+            <button onclick="addToCart('قبعة شمسية', 19.99)">أضف إلى السلة</button>
+        </div>
+
+        <!-- منتج 5 -->
+        <div class="product">
+            <a href="MOCAN SHIRT 2 - Copy (3) - Copy.html">
+            <img class="first-image" src="shirtsss/g w 1.png" alt="منتج 4">
+            <img class="second-image" src="shirtsss/G W 2.png" alt="منتج 4">
+        </a>
+        <h2>تيشرت موكان</h2>
+        <p>تيشرت موكان يتميز بالراحة والأناقة، مثالي للمناسبات اليومية.</p>
+        <p class="price">14.00 KWD</p>
+            <button onclick="addToCart('قبعة شمسية', 19.99)">أضف إلى السلة</button>
+        </div>
+
+       
+
+        <!-- منتج 4 -->
+        
+
+        <!-- منتج 4 -->
+        <div class="product">
+            <a href="cityyyy.html">
+            <img class="first-image" src="shirtsss/ci b 1.png" alt="منتج 4">
+            <img class="second-image" src="shirtsss/ci b 2.png" alt="منتج 4">
+        </a>
+        <h2>تيشرت موكان</h2>
+        <p>تيشرت موكان يتميز بالراحة والأناقة، مثالي للمناسبات اليومية.</p>
+        <p class="price">14.00 KWD</p>
+            <button onclick="addToCart('قبعة شمسية', 19.99)">أضف إلى السلة</button>
+        </div>
+
+        <!-- منتج 4 -->
+       
+
+        <!-- منتج 4 -->
+        <div class="product">
+            <a href="MOCAN SHIRT 2 - Copy.html">
+            <img class="first-image" src="shirtsss/be b 1.png" alt="منتج 4">
+            <img class="second-image" src="shirtsss/be b 2.png" alt="منتج 4">
+        </a>
+        <h2>تيشرت موكان</h2>
+        <p>تيشرت موكان يتميز بالراحة والأناقة، مثالي للمناسبات اليومية.</p>
+        <p class="price">14.00 KWD</p>
+            <button onclick="addToCart('قبعة شمسية', 19.99)">أضف إلى السلة</button>
+        </div>
+
+        
+
+
+        <div class="product">
+            <a href="MOCAN SHIRT 2 - Copy (6) - Copy.html">
+            <img class="first-image" src="AA SHIRTS D M/AA.png" alt="منتج 4">
+            <img class="second-image" src="AA SHIRTS D M/AA.png" alt="منتج 4">
+        </a>
+            <<h2>تيشرت موكان</h2>
+            <p>تيشرت موكان يتميز بالراحة والأناقة، مثالي للمناسبات اليومية.</p>
+            <p class="price">14.00 KWD</p>
+            <button onclick="addToCart('قبعة شمسية', 19.99)">أضف إلى السلة</button>
+        </div>
+
+       
+        <div class="product">
+            <a href="MOCAN SHIRT 2 - Copy (4) - Copy.html">
+            <img class="first-image" src="AA SHIRTS D M/CCCCCCCCC.png" alt="منتج 4">
+            <img class="second-image" src="AA SHIRTS D M/CCCCCCCCC.png" alt="منتج 4">
+        </a>
+        <h2>تيشرت موكان</h2>
+        <p>تيشرت موكان يتميز بالراحة والأناقة، مثالي للمناسبات اليومية.</p>
+        <p class="price">14.00 KWD</p>
+            <button onclick="addToCart('قبعة شمسية', 19.99)">أضف إلى السلة</button>
+        </div>
+
+        <div class="product">
+            <a href="MOCAN SHIRT 2 - Copy (2).html">
+            <img class="first-image" src="AA SHIRTS D M/FFFFFFF.png" alt="منتج 4">
+            <img class="second-image" src="AA SHIRTS D M/FFFFFFF.png" alt="منتج 4">
+        </a>
+        <h2>تيشرت موكان</h2>
+        <p>تيشرت موكان يتميز بالراحة والأناقة، مثالي للمناسبات اليومية.</p>
+        <p class="price">14.00 KWD</p>>
+            <button onclick="addToCart('قبعة شمسية', 19.99)">أضف إلى السلة</button>
+        </div>
+       
+        <div class="product">
+            <a href="MOCAN SHIRT 2 - Copy (5) - Copy.html">
+            <img class="first-image" src="AA SHIRTS D M/QQQQQQQQ.png" alt="منتج 4">
+            <img class="second-image" src="AA SHIRTS D M/QQQQQQQQ.png" alt="منتج 4">
+        </a>
+        <h2>تيشرت موكان</h2>
+            <p>تيشرت موكان يتميز بالراحة والأناقة، مثالي للمناسبات اليومية.</p>
+            <p class="price">14.00 KWD</p>
+            <button onclick="addToCart('قبعة شمسية', 19.99)">أضف إلى السلة</button>
+        </div>
+        <div class="product">
+            <a href="MOCAN SHIRT 2.html">
+            <img class="first-image" src="AA SHIRTS D M/B 2.png" alt="منتج 4">
+            <img class="second-image" src="AA SHIRTS D M/B 2.png" alt="منتج 4">
+        </a>
+            <h2>تيشرت موكان</h2>
+            <p>تيشرت موكان يتميز بالراحة والأناقة، مثالي للمناسبات اليومية.</p>
+            <p class="price">14.00 KWD</p>
+            <button onclick="addToCart('قبعة شمسية', 19.99)">أضف إلى السلة</button>
+        </div>
+        <!-- تفاصيل المنتجات هنا -->
+    </div>
+
+    <!-- رسالة التحديث -->
+    <div class="message" id="updateMessage">سيتم تحديثها قريباً</div>
+
+    <footer>
+        &copy; 2024 MOCAN Store. جميع الحقوق محفوظة.
+    </footer>
+
+    <!-- تضمين النصوص البرمجية اللازمة -->
+    <script>
+        // وظيفة لإظهار رسالة التحديث لفترة معينة ثم إخفائها
+        function showMessage(message) {
+            var messageBox = document.getElementById('updateMessage');
+            messageBox.textContent = message;
+            messageBox.style.display = 'block';
+            setTimeout(function() {
+                messageBox.style.display = 'none';
+            }, 2000); // 2000 ميلي ثانية أو 2 ثانية
+        }
+    </script>
+</body>
+</html>

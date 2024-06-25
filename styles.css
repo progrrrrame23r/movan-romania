@@ -1,0 +1,154 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* لون خلفية الموقع */
+    margin: 0;
+    padding: 0;
+    direction: rtl; /* توجيه النص للغات اليمينية */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333; /* لون خلفية الهيدر */
+    padding: 10px; /* هوامش الهيدر - تقليل الحجم للهواتف */
+    position: relative; /* السماح بوضع العناصر بشكل مطلق */
+}
+
+.logo {
+    font-size: 40px; /* حجم الخط المعدل للهواتف */
+    font-weight: bold; /* سمك الخط */
+    color: #fff; /* لون الخط (أبيض) */
+    margin: 0 auto; /* وضع النص في الوسط */
+    text-transform: uppercase; /* تحويل النص إلى حروف كبيرة */
+    text-align: center;
+    max-width: 90%; /* حد أقصى للعرض لتجنب تجاوز الهيدر */
+    overflow: hidden; /* تفادي تجاوز النص خارج الهيدر إذا طال */
+}
+
+.menu-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.menu-button {
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+}
+
+.dropdown-menu, .language-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    min-width: 120px;
+    text-align: right; /* محاذاة النص لليمين */
+}
+
+.dropdown-menu div, .language-menu div {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.dropdown-menu div:hover, .language-menu div:hover {
+    background-color: #f0f0f0;
+}
+
+.container {
+    margin: 20px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px; /* تقليل الهوامش العلوية للهواتف */
+    padding: 0 10px; /* تقليل الهوامش الجانبية للهواتف */
+}
+
+.image-with-caption {
+    margin-bottom: 10px; /* تقليل المسافة بين الصور للهواتف */
+    text-align: center;
+}
+
+.logo-image {
+    width: 100%; /* تعديل حجم الصورة لتمتد للهواتف */
+    max-width: 100%; /* حد أقصى للعرض للهواتف */
+    display: block;
+    border: 2px solid #333;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.image-with-caption:hover .logo-image {
+    transform: scale(1.1);
+}
+
+.caption {
+    margin-top: 10px;
+    font-size: 16px; /* حجم الخط المعدل للتوافق مع الهواتف */
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    direction: ltr;
+}
+
+.return-button {
+    position: fixed;
+    top: 10px; /* تعديل الموضع للهواتف */
+    right: 10px; /* تعديل الموضع للهواتف */
+    background-color: #333;
+    color: #fff;
+    padding: 8px 16px; /* تعديل حجم الزر للهواتف */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.return-button:hover {
+    background-color: #555;
+}
+
+.return-button::before {
+    content: "\2190";
+    margin-right: 5px;
+}
+
+.language-menu {
+    border-top: 1px solid #ccc; /* خط تفصل الخيارات */
+}
+
+/* قواعد الوسائط للهواتف */
+@media only screen and (max-width: 600px) {
+    .logo {
+        font-size: 30px; /* حجم الخط المعدل للهواتف */
+    }
+    .menu-container {
+        top: 10px; /* تعديل الموضع للهواتف */
+        right: 10px; /* تعديل الموضع للهواتف */
+    }
+    .logo-container {
+        margin-top: 5px; /* تقليل الهوامش العلوية للهواتف */
+        padding: 0 5px; /* تقليل الهوامش الجانبية للهواتف */
+    }
+    .image-with-caption {
+        margin-bottom: 5px; /* تقليل المسافة بين الصور للهواتف */
+    }
+    .caption {
+        font-size: 14px; /* حجم الخط المعدل للهواتف */
+    }
+    .return-button {
+        top: 5px; /* تعديل الموضع للهواتف */
+        right: 5px; /* تعديل الموضع للهواتف */
+        padding: 6px 12px; /* تعديل حجم الزر للهواتف */
+    }
+}

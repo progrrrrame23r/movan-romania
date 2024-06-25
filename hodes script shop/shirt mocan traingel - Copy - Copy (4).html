@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قميص فلينكو</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar ul li {
+            float: left;
+        }
+        .navbar ul li a {
+            display: block;
+            color: #ffffff;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navbar ul li a:hover {
+            background-color: #ffffff;
+            color: #333;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 80px auto 20px; /* Adjusted margin for fixed navbar */
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
+            align-items: center; /* Center horizontally */
+        }
+        .product-content {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            flex-direction: row;
+        }
+        .product-image {
+            flex: 1;
+            max-width: 50%;
+        }
+        .product-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .product-details {
+            flex: 1;
+            max-width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-option {
+            margin-bottom: 20px;
+        }
+        .product-option label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .color-options, .size-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .color-option, .size-option {
+            width: 40px;
+            height: 40px;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .color-option.white {
+            background-color: #ffffff;
+        }
+        .color-option.black {
+            background-color: #000;
+        }
+        .color-option.selected, .size-option.selected {
+            border: 2px solid #000;
+            transform: scale(1.1);
+        }
+        .size-option {
+            width: 60px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .size-option:hover {
+            background-color: #ffffff;
+        }
+        .add-to-cart-container {
+            margin-top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .add-to-cart-btn {
+            background-color: #333;
+            color: rgb(255, 255, 255);
+            padding: 12px 24px; /* Increased padding */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px; /* Increased font size */
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Added box-shadow */
+        }
+        .add-to-cart-btn:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
+        .add-to-cart-btn:active {
+            transform: scale(1);
+        }
+        .product-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .product-description {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .product-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .product-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .product-image, .product-details {
+                max-width: 100%;
+            }
+            .size-option, .color-option {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .add-to-cart-btn {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+            .size-option, .color-option {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="#">السلة</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="product-content">
+            <div class="product-image">
+                <img id="productImage" src="sh s/m w 1.png" alt="صورة المنتج">
+            </div>
+            <div class="product-details">
+                <div class="product-title">قميص فلينكو</div>
+                <div class="product-description">قميص فلينكو المصنوع من القطن الطبيعي، يتميز بالراحة والأناقة، مثالي للمناسبات اليومية.</div>
+                <div class="product-price">120.00 ر.س</div>
+                <div class="product-option">
+                    <label for="color">اختر اللون:</label>
+                    <div class="color-options" id="colorOptions">
+                        <div class="color-option white" data-color="white"></div>
+                        <div class="color-option black" data-color="black"></div>
+                    </div>
+                    <input type="hidden" id="color" name="color" value="white">
+                </div>
+                <div class="product-option">
+                    <label for="size">اختر المقاس:</label>
+                    <div class="size-options" id="sizeOptions">
+                        <div class="size-option" data-size="XS">XS</div>
+                        <div class="size-option" data-size="S">S</div>
+                        <div class="size-option" data-size="M">M</div>
+                        <div class="size-option" data-size="L">L</div>
+                        <div class="size-option" data-size="XL">XL</div>
+                    </div>
+                    <input type="hidden" id="size" name="size" value="XS">
+                </div>
+                <div class="add-to-cart-container">
+                    <button class="add-to-cart-btn">ضع في السلة</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const colorOptions = document.querySelectorAll('.color-option');
+        const productImage = document.getElementById('productImage');
+
+        colorOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                colorOptions.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                const selectedColor = this.getAttribute('data-color');
+                document.getElementById('color').value = selectedColor;
+
+                if (selectedColor === 'white') {
+                    productImage.src = 'sh s/m w 1.png';
+                } else if (selectedColor === 'black') {
+                    productImage.src = 'sh s/m b 2.jpeg';
+                }
+            });
+        });
+
+        document.querySelectorAll('.size-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                document.getElementById('size').value = this.getAttribute('data-size');
+            });
+        });
+    </script>
+</body>
+</html>
